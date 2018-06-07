@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
+
+Route::get('/choose-platform', function () {
+    return view('choose-os');
+});
+
+Route::get('/choose-platform/android', function () {
+    return view('android-id');
+});
+Route::get('/choose-platform/ios', function () {
+    return view('ios-id');
+});
+Route::get('/existing-android', 'AndroidController@prepare');
