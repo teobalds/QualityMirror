@@ -38,8 +38,29 @@
                         <h2><img class="rounded-circle" src="{{ $appimg }}" alt="{{ $appname }}}}" width="50" height="50"> {{ $appname }}</h2>
                         <div>{!! nl2br(e($appdscr)) !!}</div>
                     </div>
-                    <div class="col-lg-4">
-
+                    <div class="col-lg-4 align-content-lg-start">
+                        <div class="ratings">
+                            <span>{{ $rating }} / 5</span>
+                            <spans class="stars">
+                                @foreach($stars as $i => $star)
+                                    <span class="star {{$star}}"></span>
+                                @endforeach
+                            </spans>
+                        </div>
+                        <div class="grades">
+                            @foreach($rgrades as $i => $grade)
+                                <div class="grade">
+                                    <div class="row">
+                                        <div class="col-lg-1">{{$i}}</div>
+                                        <div class="col-lg-11">
+                                            <div class="grade-progress progress">
+                                                <div class="progress-bar bg-{{$i}}" role="progressbar" style="width: {{$grade['percents']}}%" aria-valuenow="{{$grade['percents']}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

@@ -65,3 +65,42 @@ html, body {
 .qmirror-container {
     padding-top: 15px;
 }
+
+.star {
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.star-inactive {
+    background-image: url(../img/rating-star-256-gray.png);
+}
+
+.star-active {
+    background-image: url(../img/rating-star-256-yellow.png);
+}
+
+.star-half {
+    background-image: url(../img/rating-star-256-half.png);
+}
+
+.bg-5 {
+    background-color: #00801A !important;
+}
+
+.bg-4 {
+    background-color: #00CC29 !important;
+}
+
+.bg-3 {
+    background-color: #FF6600 !important;
+}
+
+.bg-2 {
+    background-color: #FF3300 !important;
+}
+
+.bg-1 {
+    background-color: #CC0000 !important;
+}

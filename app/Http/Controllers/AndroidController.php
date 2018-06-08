@@ -23,18 +23,38 @@ class AndroidController extends Controller
         $rating = (float) trim(\HTMLDomParser::str_get_html($html)->find('div.BHMmbe')[0]->plaintext);
         $data['rating'] = $rating;
         $rates = (int) str_replace(',', '', trim(\HTMLDomParser::str_get_html($html)->find('span.EymY4b > span')[1]->plaintext));
+        $fullrates = floor($rating);
+//        dd($fullrates);
+        $raterounded = round($rating);
+        $halfrate = 0;
+        if($raterounded > $rating){
+            $halfrate = $raterounded;
+        }
+        $stars = array();
+        for($i = 1; $i<= $fullrates; $i++){
+            $stars[$i]  = 'star-active';
+        }
+        if($halfrate){
+            $stars[$halfrate] = 'star-half';
+        }
+        for($i = 1; $i <=5; $i++){
+            if(!array_key_exists($i, $stars)){
+                $stars[$i] = 'star-inactive';
+            }
+        }
         $data['rates'] = $rates;
+        $data['stars'] = $stars;
         $grades = \HTMLDomParser::str_get_html($html)->find('div.mMF0fd');
         $rgrades = array();
         foreach($grades as $g){
 //            dd(\HTMLDomParser::str_get_html($g)->find('span'));
             $grade = (int) trim(\HTMLDomParser::str_get_html($g)->find('span')[0]->plaintext);
             $graderates = (int) str_replace(',', '', trim(\HTMLDomParser::str_get_html($g)->find('span')[1]->title));
-            $gradepercents = round(($graderates / $rates)*100);
+            $gradepercents = (int) round(($graderates / $rates)*100);
             $rgrades[$grade] = ['total' => $graderates, 'percents' => $gradepercents];
         }
         $data['rgrades'] = $rgrades;
-        //dd($data);
+//        dd($data);
         return view('android', $data);
     }
 }
