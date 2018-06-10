@@ -8,7 +8,7 @@ use Ammadeuss\LaravelHtmlDomParser;
 
 class AndroidController extends Controller
 {
-    public function prepare()
+    public function prepare(Request $request)
     {
         $data = array();
         $url = 'https://play.google.com/store/apps/details?id=com.playrix.gardenscapes';
@@ -69,8 +69,8 @@ class AndroidController extends Controller
         ])
             ->with('enabled_answers')
             ->inRandomOrder()->get();
-//        dd($data);
         $data['questions'] = $questions;
+        $request->session()->put('appdata', $data);
         return view('android', $data);
     }
 }
