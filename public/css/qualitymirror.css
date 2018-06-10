@@ -104,3 +104,18 @@ html, body {
 .bg-1 {
     background-color: #CC0000 !important;
 }
+
+.surveyintro {
+    font-weight: bold;
+    font-size: 14pt;
+    padding-top: 25pt;
+    padding-bottom: 15pt;
+}
+
+.question {
+    font-weight: bold;
+}
+
+.question-row {
+    padding-top: 15px;
+}

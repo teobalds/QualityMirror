@@ -63,6 +63,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="surveyintro">Atbildiet uz jautājumiem par izstrādes procesa organizāciju un sistēmas uzturēšanu!</div>
+                </div>
+                <form>
+                    @foreach($questions as $q)
+                        <div class="row question-row">
+                            <div class="col-lg-4">
+                                <div class="question">
+                                    {{$q->question}}
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                @foreach($q->enabled_answers as $a)
+                                    <div class="form-check">
+                                        @if($q->type == 'onlyone')
+                                            <input class="form-check-input" type="radio" name="q_{{$q->id}}" id="q_{{$q->id}}_{{$a->id}}" value="{{$a->id}}">
+                                            <label class="form-check-label" for="q_{{$q->id}}_{{$a->id}}">
+                                                {{$a->answer}}
+                                            </label>
+                                        @endif
+                                        @if($q->type == 'multiple')
+                                                <input class="form-check-input" type="checkbox" name="q_{{$q->id}}[{{$a->id}}]" value="" id="q_{{$q->id}}_{{$a->id}}">
+                                                <label class="form-check-label" for="q_{{$q->id}}_{{$a->id}}">
+                                                    {{$a->answer}}
+                                                </label>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Pabeigt</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
