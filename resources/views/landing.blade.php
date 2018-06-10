@@ -23,6 +23,7 @@
         <div class="flex-center position-ref full-height">
 
             <div class="container">
+                <div>CSRF token: {{!! csrf_token() !!}}</div>
                 <div class="title m-b-md flex-center">
                     {{ config('app.name', 'QualityMirror') }}
                 </div>
@@ -32,13 +33,23 @@
                         <img class="rounded-circle" src="{{ URL::asset('img/Services-Icon.png') }}" alt="Generic placeholder image" width="140" height="140">
                         <h2>Veidošu jaunu lietotni</h2>
                         <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                        <p><a class="btn btn-primary" href="#" role="button">Turpināt</a></p>
+                        <p>
+                            {!! Form::open([ 'route' => ['survey.new']] ) !!}
+                            <input type="hidden"  name="action" value="new">
+                            <button  type="submit" class="btn btn-primary">Turpināt</button>
+                            {!! Form::close() !!}
+                        </p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
                         <img class="rounded-circle" src="{{ URL::asset('img/red-speed-icon.png') }}" alt="Generic placeholder image" width="140" height="140">
                         <h2>Man jau ir lietotne</h2>
                         <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                        <p><a class="btn btn-primary" href="#" role="button">Turpināt</a></p>
+                        <p>
+                            {!! Form::open([ 'route' => ['choose.os']] ) !!}
+                            <input type="hidden"  name="action" value="existing">
+                            <button  type="submit" class="btn btn-primary">Turpināt</button>
+                            {!! Form::close() !!}
+                        </p>
                     </div><!-- /.col-lg-4 -->
                 </div>
             </div>

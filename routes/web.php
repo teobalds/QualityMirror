@@ -10,19 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'SetupController@action')->name('choose.action');
+Route::post('/choose-platform', 'SetupController@os')->name('choose.os');
+Route::post('/choose-platform/android', 'SetupController@android')->name('input.android');
+Route::post('/choose-platform/ios', 'SetupController@ios')->name('input.ios');
 
-Route::get('/', function () {
-    return view('landing');
-});
+Route::post('/new/survey', 'SurveyController@new')->name('survey.new');
+Route::post('/existing/survey', 'SurveyController@existing')->name('survey.existing');
+Route::post('/existing/results', 'ResultsController@existing')->name('results.existing');
+Route::post('/new/results', 'ResultsController@new')->name('results.new');
 
-Route::get('/choose-platform', function () {
-    return view('choose-os');
-});
-
-Route::get('/choose-platform/android', function () {
-    return view('android-id');
-});
-Route::get('/choose-platform/ios', function () {
-    return view('ios-id');
-});
-Route::get('/existing-android', 'AndroidController@prepare');
