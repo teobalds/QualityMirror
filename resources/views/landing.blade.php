@@ -23,7 +23,6 @@
         <div class="flex-center position-ref full-height">
 
             <div class="container">
-                <div>CSRF token: {!! Form::token() !!}</div>
                 <div class="title m-b-md flex-center">
                     {{ config('app.name', 'QualityMirror') }}
                 </div>

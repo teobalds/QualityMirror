@@ -29,28 +29,13 @@
                 </div>
             </div>
         </header>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref error-place">
 
-            <div class="container">
-                <div class="row flex-center">
-                    <div class="col-lg-4">
-
-                        <h2><img class="rounded-circle" src="{{ URL::asset('img/ios.png') }}" alt="iOS ikona" width="50" height="50"> iOS lietotne</h2>
-                        <div>
-                            {!! Form::open([ 'route' => ['survey.existing']] ) !!}
-                            <div class="form-group">
-                                <label for="appid">iTunes adrese</label>
-                                <input type="text" class="form-control" id="appid" name="appid" aria-describedby="appidHelp" placeholder="Ievadiet lietotnes adresi">
-                                <small id="appidHelp" class="form-text text-muted">Lietotnes adsrese iTunes veikalā.</small>
-                            </div>
-                            <button  type="submit" class="btn btn-primary" disabled>Turpināt</button>
-                            {!! Form::close() !!}
-                        </div>
-                    </div><!-- /.col-lg-4 -->
-                </div>
-                <div class="store-preview-container">
-                    <img src="{{ URL::asset('img/ios-app.png') }}" alt="Android lietotne iTunes" style="max-width: 99%" />
-                </div>
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Kļūda!</h4>
+                <p>Šāda lietotne neeksistē vai arī kļūdījies, ievadot identifikatoru!</p>
+                <hr>
+                <p class="mb-0">{{ HTML::linkRoute('choose.action', 'Uz sākumu', [], ['title' => 'Uz sākumu']) }} </p>
             </div>
         </div>
     </body>

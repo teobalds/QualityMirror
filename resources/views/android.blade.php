@@ -23,7 +23,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark box-shadow">
                 <div class="container d-flex justify-content-between">
-                    <a href="#" class="navbar-brand d-flex align-items-center">
+                    <a href="/" class="navbar-brand d-flex align-items-center">
                         <strong>{{ config('app.name', 'QualityMirror') }}</strong>
                     </a>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="surveyintro">Atbildiet uz jautājumiem par izstrādes procesa organizāciju un sistēmas uzturēšanu!</div>
                 </div>
-                <form>
+                {!! Form::open([ 'route' => ['results.existing']] ) !!}
                     @foreach($questions as $q)
                         <div class="row question-row">
                             <div class="col-lg-4">
@@ -108,10 +108,10 @@
                     @endforeach
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Pabeigt</button>
+                            <button  type="submit" class="btn btn-primary">Pabeigt</button>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </body>

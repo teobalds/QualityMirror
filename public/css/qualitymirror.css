@@ -127,3 +127,31 @@ html, body {
 .appdscr-extra {
     padding-top: 15px;
 }
+
+.error-place {
+    padding-top: 150px;
+}
+
+.survey-result-1 {
+    color: #CC0000 !important;
+}
+
+.survey-result-2 {
+    color: #FF6600 !important;
+}
+
+.survey-result-3 {
+    color: #00801A !important;
+}
+
+.appinfo-results {
+    padding-top: 50px;
+}
+
+.suggestion {
+    font-size: 11pt;
+}
+
+.results-group {
+    padding-top: 15px;
+}

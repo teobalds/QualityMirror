@@ -11,31 +11,30 @@ class SurveyController extends Controller
     public function existing(Request $request){
         $action = $request->session()->get('action');
         $os = $request->session()->get('os');
-        $appid = $request->session()->get('appid');
-        if(!$action && $action != 'existing'){
+        $appid = $request->input('appid');
+//        dd(['action' => $action, 'os' => $os, 'appid' => $appid]);
+        if(!$action || $action != 'existing'){
+            dd('nepareizs action');
             return redirect()->route('choose.action');
         }
         if(!$appid){
-            switch ($os){
-                case 'android':
-                    return redirect()->route('input.android');
-                    break;
-                case 'ios':
-                    return redirect()->route('input.ios');
-                    break;
-                default:
-                    return redirect()->route('choose.os');
-            }
+            dd('nav appid');
+            return redirect()->route('choose.action');
         }
         switch ($os){
-            case 'andoid':
+            case 'android':
                 $data = PlayStoreParser::get($appid);
+                if(!$data) {
+                    dd('rādām kļūdu');
+                    return view('error');
+                }
                 break;
             case 'ios':
                 #TODO: implement iTunes store parser
                 break;
             default:
-                return redirect()->route('choose.os');
+                dd('nepareizs os');
+                return redirect()->route('choose.action');
         }
         $where = [
             ['enabled', '=', true],
@@ -50,9 +49,11 @@ class SurveyController extends Controller
     public function new(Request $request)
     {
         $action = $request->input('action');
-        if($action != 'existing'){
+        if($action != 'new'){
+            dd('nav jauna anketa');
             return redirect()->route('choose.action');
         }
+        $request->session()->put('action', $action);
         $data = array();
         $where = [
             ['enabled', '=', true],

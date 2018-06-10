@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Ammadeuss\LaravelHtmlDomParser\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -210,6 +211,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'HTMLDomParser' => Ammadeuss\LaravelHtmlDomParser\Facade::class,
+        'HTML' => Collective\Html\HtmlFacade::class,
 
     ],
 

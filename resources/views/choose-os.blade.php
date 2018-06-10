@@ -20,6 +20,15 @@
 
     </head>
     <body>
+        <header>
+            <div class="navbar navbar-dark bg-dark box-shadow">
+                <div class="container d-flex justify-content-between">
+                    <a href="/" class="navbar-brand d-flex align-items-center">
+                        <strong>{{ config('app.name', 'QualityMirror') }}</strong>
+                    </a>
+                </div>
+            </div>
+        </header>
         <div class="flex-center position-ref full-height">
 
             <div class="container">
@@ -28,12 +37,22 @@
 
                         <img class="rounded-circle" src="{{ URL::asset('img/android.png') }}" alt="Android ikona" width="140" height="140">
                         <h2>Android lietotne</h2>
-                        <p><a class="btn btn-primary" href="#" role="button">Turpināt</a></p>
+                        <p>
+                            {!! Form::open([ 'route' => ['input.android']] ) !!}
+                            <input type="hidden"  name="os" value="android">
+                            <button  type="submit" class="btn btn-primary">Turpināt</button>
+                            {!! Form::close() !!}
+                        </p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
                         <img class="rounded-circle" src="{{ URL::asset('img/ios.png') }}" alt="iOS lietotne" width="140" height="140">
                         <h2>iOS lietotne</h2>
-                        <p><a class="btn btn-primary" href="#" role="button">Turpināt</a></p>
+                        <p>
+                            {!! Form::open([ 'route' => ['input.ios']] ) !!}
+                            <input type="hidden"  name="os" value="ios">
+                            <button  type="submit" class="btn btn-primary">Turpināt</button>
+                            {!! Form::close() !!}
+                        </p>
                     </div><!-- /.col-lg-4 -->
                 </div>
             </div>

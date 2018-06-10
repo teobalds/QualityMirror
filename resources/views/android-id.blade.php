@@ -20,6 +20,15 @@
 
     </head>
     <body>
+        <header>
+            <div class="navbar navbar-dark bg-dark box-shadow">
+                <div class="container d-flex justify-content-between">
+                    <a href="/" class="navbar-brand d-flex align-items-center">
+                        <strong>{{ config('app.name', 'QualityMirror') }}</strong>
+                    </a>
+                </div>
+            </div>
+        </header>
         <div class="flex-center position-ref full-height">
 
             <div class="container">
@@ -28,14 +37,14 @@
 
                         <h2><img class="rounded-circle" src="{{ URL::asset('img/android.png') }}" alt="Android ikona" width="50" height="50"> Android lietotne</h2>
                         <div>
-                            <form>
-                                <div class="form-group">
-                                    <label for="appid">Lietotnes identifikators</label>
-                                    <input type="text" class="form-control" id="appid" aria-describedby="appidHelp" placeholder="Ievadiet lietotnes identifikatoru">
-                                    <small id="appidHelp" class="form-text text-muted">Lietotnes unikālais identifikators Google Play veikalā.</small>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Turpināt</button>
-                            </form>
+                            {!! Form::open([ 'route' => ['survey.existing']] ) !!}
+                            <div class="form-group">
+                                <label for="appid">Lietotnes identifikators</label>
+                                <input type="text" class="form-control" id="appid" name="appid" aria-describedby="appidHelp" placeholder="Ievadiet lietotnes identifikatoru">
+                                <small id="appidHelp" class="form-text text-muted">Lietotnes unikālais identifikators Google Play veikalā.</small>
+                            </div>
+                            <button  type="submit" class="btn btn-primary">Turpināt</button>
+                            {!! Form::close() !!}
                         </div>
                     </div><!-- /.col-lg-4 -->
                 </div>
