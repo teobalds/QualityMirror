@@ -32,13 +32,14 @@
         <div class="flex-center position-ref">
 
             <div class="container qmirror-container">
-                <div class="row flex-center">
+                <div class="row">
+                    <h2><img class="rounded-circle" src="{{ $appimg }}" alt="{{ $appname }}}}" width="50" height="50"> {{ $appname }}</h2>
+                </div>
+                <div class="row">
                     <div class="col-lg-8">
-
-                        <h2><img class="rounded-circle" src="{{ $appimg }}" alt="{{ $appname }}}}" width="50" height="50"> {{ $appname }}</h2>
-                        <div>{!! nl2br(e($appdscr)) !!}</div>
+                        <div class="appdescriptions">{!! nl2br(e($appdscr)) !!}</div>
                     </div>
-                    <div class="col-lg-4 align-content-lg-start">
+                    <div class="col-lg-4">
                         <div class="ratings">
                             <span>{{ $rating }} / 5</span>
                             <spans class="stars">
@@ -47,6 +48,7 @@
                                 @endforeach
                             </spans>
                         </div>
+                        <div>Vērtējumu skaits: {{$rates}}</div>
                         <div class="grades">
                             @foreach($rgrades as $i => $grade)
                                 <div class="grade">
@@ -61,6 +63,16 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                </div>
+                <div class="row appdscr-extra">
+                    <div class="col-lg-4">
+                        <div>Faila izmērs: {{$filesize}}</div>
+                        <div>Instalāciju skaits: {{$installs['display']}}</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div>Atjaunota: {{$updated['date']}}</div>
+                        <div class="appdescriptions">{!! nl2br(e($upddscr)) !!}</div>
                     </div>
                 </div>
                 <div class="row">

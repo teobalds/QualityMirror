@@ -19,8 +19,10 @@ class AndroidController extends Controller
         $data['appname'] = $appname;
         $appimg = trim(\HTMLDomParser::str_get_html($html)->find('div.dQrBL > img')[0]->src);
         $data['appimg'] = $appimg;
-        $appdscr = trim(\HTMLDomParser::str_get_html($html)->find('div.DWPxHb > content > div')[0]->plaintext);
+        $appdscr = trim(\HTMLDomParser::str_get_html($html)->find('div.DWPxHb > content')[0]->plaintext);
+        $upddscr = trim(\HTMLDomParser::str_get_html($html)->find('div.DWPxHb > content')[1]->plaintext);
         $data['appdscr'] = $appdscr;
+        $data['upddscr'] = $upddscr;
         $rating = (float) trim(\HTMLDomParser::str_get_html($html)->find('div.BHMmbe')[0]->plaintext);
         $data['rating'] = $rating;
         $rates = (int) str_replace(',', '', trim(\HTMLDomParser::str_get_html($html)->find('span.EymY4b > span')[1]->plaintext));
@@ -53,6 +55,13 @@ class AndroidController extends Controller
             $rgrades[$grade] = ['total' => $graderates, 'percents' => $gradepercents];
         }
         $data['rgrades'] = $rgrades;
+        $updated = strtotime(trim(\HTMLDomParser::str_get_html($html)->find('span.htlgb > div span.htlgb')[0]->plaintext));
+        $data['updated'] = ['time' => $updated, 'date' => date('Y-m-d', $updated)];
+        $filesize = trim(\HTMLDomParser::str_get_html($html)->find('span.htlgb > div span.htlgb')[1]->plaintext);
+        $installs = trim(\HTMLDomParser::str_get_html($html)->find('span.htlgb > div span.htlgb')[2]->plaintext);
+        $installs_int = (int)str_replace(['+', ','], '', $installs);
+        $data['installs'] = ['display' => $installs, 'calculated' => $installs_int];
+        $data['filesize'] = $filesize;
         $questions = Question::where([
             ['enabled', '=', true],
             ['use_for_existing', '=', true],

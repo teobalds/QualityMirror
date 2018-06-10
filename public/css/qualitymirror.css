@@ -119,3 +119,11 @@ html, body {
 .question-row {
     padding-top: 15px;
 }
+
+.appdescriptions {
+    font-size: 10pt;
+}
+
+.appdscr-extra {
+    padding-top: 15px;
+}
