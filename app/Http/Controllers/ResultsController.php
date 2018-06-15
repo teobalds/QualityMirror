@@ -24,7 +24,6 @@ class ResultsController extends Controller
     {
         $action = $request->session()->get('action');
         if($action != 'new'){
-            dd('nav new action');
             return redirect()->route('choose.action');
         }
         $resultsdata = ResultsCalculator::calculate($request->all());

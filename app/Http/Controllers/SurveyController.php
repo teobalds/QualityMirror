@@ -14,18 +14,15 @@ class SurveyController extends Controller
         $appid = $request->input('appid');
 //        dd(['action' => $action, 'os' => $os, 'appid' => $appid]);
         if(!$action || $action != 'existing'){
-            dd('nepareizs action');
             return redirect()->route('choose.action');
         }
         if(!$appid){
-            dd('nav appid');
             return redirect()->route('choose.action');
         }
         switch ($os){
             case 'android':
                 $data = PlayStoreParser::get($appid);
                 if(!$data) {
-                    dd('rādām kļūdu');
                     return view('error');
                 }
                 break;
@@ -33,7 +30,6 @@ class SurveyController extends Controller
                 #TODO: implement iTunes store parser
                 break;
             default:
-                dd('nepareizs os');
                 return redirect()->route('choose.action');
         }
         $where = [
@@ -50,7 +46,6 @@ class SurveyController extends Controller
     {
         $action = $request->input('action');
         if($action != 'new'){
-            dd('nav jauna anketa');
             return redirect()->route('choose.action');
         }
         $request->session()->put('action', $action);
